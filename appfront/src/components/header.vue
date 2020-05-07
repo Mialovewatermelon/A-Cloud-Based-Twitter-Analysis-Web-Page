@@ -1,7 +1,17 @@
 <template>
-    <div id="header">
-        <p>hello world</p>
-    </div>
+    <div class="header-wrap">
+      <div class="header-left">
+        <dv-decoration-8 style="width:300px;height:50px;" />
+      </div>
+      <div class="header-title">
+        <h1 class="title">Twitter Analysis</h1>
+        <dv-decoration-5 style="width:700px;height:40px;" />
+      </div>
+      <div class="header-right">
+        <dv-decoration-8 :reverse="true" style="width:300px;height:50px;" />
+      </div>
+  </div>
+
 </template>
 
 <script>
@@ -11,5 +21,17 @@ export default {
 </script>
 
 <style scoped>
+.header-wrap {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  }
 
+.title {
+  color: white;
+  text-align: center;
+  font-size: 50px;
+  padding-top: 10px;
+  width:500px;
+}
 </style>

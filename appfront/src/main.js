@@ -9,7 +9,9 @@ import 'element-ui/lib/theme-chalk/index.css'
 import echarts from 'echarts'
 import axios from 'axios'
 import Qs from 'qs'
+import dataV from '@jiaminghi/data-view'
 
+Vue.use(dataV)
 Vue.use(ElementUI)
 
 Vue.config.productionTip = false
