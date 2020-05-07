@@ -1,5 +1,6 @@
 <template>
   <div class="home">
+    <header_com></header_com>
       <button v-on:click="greet">Greet</button>
     <el-row display="margin-top:10px">
         <el-input v-model="input" placeholder="请输入书名" style="display:inline-table; width: 30%; float:left"></el-input>
@@ -14,6 +15,8 @@
 </template>
 
 <script>
+import header from '../components/header'
+
 export default {
   name: 'Home',
   data: function () {
@@ -21,6 +24,9 @@ export default {
       input: '',
       name: 'Vue.js'
     }
+  },
+  components: {
+    header_com: header
   },
 
   methods: {

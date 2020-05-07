@@ -1,10 +1,5 @@
 <template>
-  <div>
-    <div id="piecharts" class="myecharts"></div>
-    <div>
-      <button v-on:click="applyData">!!!!!!!</button>
-    </div>
-  </div>
+  <div id="piecharts" class="myecharts"></div>
 </template>
 
 <script>
@@ -89,7 +84,10 @@ export default {
           orient: 'vertical',
           left: 10,
           // eslint-disable-next-line no-undef
-          data: this.pieChartData.name
+          data: this.pieChartData.name,
+          textStyle: {
+            color: 'white'
+          }
         },
         series: [
           {
@@ -119,6 +117,9 @@ export default {
 
       if (this.option && typeof this.option === 'object') {
         this.chart.setOption(this.option, true)
+        // window.addEventListener('resize', function () {
+        //   this.chart.resize()
+        // })
       }
     }
   }
