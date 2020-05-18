@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '#%v68)hz%e(#-y(zu($sq+$^iew=ig2kd1ws3py*+b$%du^*r_'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'web']
 
 
 # Application definition
@@ -49,6 +49,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'corsheaders.middleware.CorsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'Demo.urls'
@@ -56,7 +57,7 @@ ROOT_URLCONF = 'Demo.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['appfront/dist'],
+        'DIRS': [os.path.join(BASE_DIR, 'appfront', 'dist')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -124,5 +125,7 @@ STATIC_URL = '/static/'
 
 # Add for vuejs
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "appfront/dist/static"),
-]   
+   os.path.join(BASE_DIR, 'appfront', 'dist','static'),
+]
+STATIC_ROOT = 'appfront/dist/static'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
