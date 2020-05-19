@@ -1,9 +1,10 @@
 FROM python:3.7 as prod
 
 
-WORKDIR /Demo
+WORKDIR /CCC-Assignment2
 
-ADD . /Demo
+ADD . /CCC-Assignment2
+
 
 ENV HTTP_PROXY "http://wwwproxy.unimelb.edu.au:8000/"
 ENV HTTPS_PROXY "http://wwwproxy.unimelb.edu.au:8000/"
