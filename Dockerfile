@@ -5,5 +5,5 @@ WORKDIR /Demo
 
 ADD . /Demo
 
-RUN pip install -r REQUIREMENTS.TXT
-RUN pip install gunicorn==19.9.0
+RUN pip3 install -r REQUIREMENTS.TXT
+RUN pip3 install gunicorn==19.9.0
