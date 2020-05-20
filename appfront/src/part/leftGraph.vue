@@ -18,47 +18,47 @@
 <script>
 import piechart from '../components/piechart'
 import statical from '../components/statical'
-  export default {
-    props: {
-      pieChartData: {
-        type: Array,
-        // eslint-disable-next-line vue/require-valid-default-prop
-        default: [
-          { value: 25, name: '河北' },
-          { value: 20, name: '江苏' },
-          { value: 35, name: '浙江' },
-          { value: 30, name: '四川' },
-          { value: 40, name: '湖北' }
-        ]
-      },
-      staticalData: {
-        type: Array,
-        // eslint-disable-next-line vue/require-valid-default-prop
-        default: [
-          ['number', 'amount', 'product'],
-          [89.3, 58212, 'Matcha Latte'],
-          [57.1, 78254, 'Milk Tea'],
-          [74.4, 41032, 'Cheese Cocoa'],
-          [50.1, 12755, 'Cheese Brownie'],
-          [89.7, 20145, 'Matcha Cocoa'],
-          [68.1, 79146, 'Tea'],
-          [19.6, 91852, 'Orange Juice'],
-          [10.6, 101852, 'Lemon Juice'],
-          [32.7, 20112, 'Walnut Brownie']
-        ]
-      }
+export default {
+  props: {
+    pieChartData: {
+      type: Array,
+      // eslint-disable-next-line vue/require-valid-default-prop
+      default: [
+        { value: 25, name: '河北' },
+        { value: 20, name: '江苏' },
+        { value: 35, name: '浙江' },
+        { value: 30, name: '四川' },
+        { value: 40, name: '湖北' }
+      ]
     },
-
-    data() {
-      return {
-      }
-    },
-    name: 'left',
-    components: {
-      piechart,
-      statical
+    staticalData: {
+      type: Array,
+      // eslint-disable-next-line vue/require-valid-default-prop
+      default: [
+        ['number', 'amount', 'product'],
+        [89.3, 58212, 'Matcha Latte'],
+        [57.1, 78254, 'Milk Tea'],
+        [74.4, 41032, 'Cheese Cocoa'],
+        [50.1, 12755, 'Cheese Brownie'],
+        [89.7, 20145, 'Matcha Cocoa'],
+        [68.1, 79146, 'Tea'],
+        [19.6, 91852, 'Orange Juice'],
+        [10.6, 101852, 'Lemon Juice'],
+        [32.7, 20112, 'Walnut Brownie']
+      ]
     }
+  },
+
+  data () {
+    return {
+    }
+  },
+  name: 'left',
+  components: {
+    piechart,
+    statical
   }
+}
 </script>
 <style>
   .title {
