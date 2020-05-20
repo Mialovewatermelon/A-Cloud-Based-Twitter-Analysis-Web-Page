@@ -1,22 +1,20 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
 import Home from '@/components/Home'
 import Try from '@/components/Try'
-import index from '@/components/index'
 import piechart from '@/components/piechart'
 import statical from '@/components/statical'
-import leftGraph from '@/components/leftGraph'
-import header from '@/components/header'
-import rightGraph from '@/components/rightGraph'
+import analysis from '@/view/analysis'
+import homePage from '@/view/homePage'
+import map from '@/components/map'
 Vue.use(Router)
 
 export default new Router({
   routes: [
     {
       path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
+      name: 'homePage',
+      component: homePage
     },
 
     {
@@ -24,44 +22,31 @@ export default new Router({
       name: 'Home',
       component: Home
     },
+    {
+      path: '/map',
+      name: 'map',
+      component: map
+    },
 
     {
       path: '/Try',
       name: 'Try',
       component: Try
     },
-
-    {
-      path: '/index',
-      name: 'index',
-      component: index
-    },
-
     {
       path: '/pie',
       name: 'piechart',
       component: piechart
     },
-
     {
       path: '/statical',
       name: 'statical',
       component: statical
     },
     {
-      path: '/left',
-      name: 'leftGrapht',
-      component: leftGraph
-    },
-    {
-      path: '/header',
-      name: 'header',
-      component: header
-    },
-    {
-      path: '/right',
-      name: 'rightGraph',
-      component: rightGraph
+      path: '/analysis',
+      name: 'analysis',
+      component: analysis
     }
   ]
 })

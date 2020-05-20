@@ -9,20 +9,6 @@ import json
 def index(request):
     return render(request, 'index.html')
 
-# Create your views here.
-@require_http_methods(["GET"])
-def add_book(request):
-    response={}
-    try:
-        book = request.GET.get('book_name')
-        response['msg'] = 'success'
-        response['error_num'] = 0
-    except  Exception as e:
-        response['msg'] = str(e)
-        response['error_num'] = 1
-    return JsonResponse(response)
-
-
 @require_http_methods(["GET"])
 # 给piechart提供每一部分的数据 格式为[{value: , name;''}]
 def get_geodata(request):

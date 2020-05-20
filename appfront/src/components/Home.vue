@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import header from '../components/header'
+import header from '../part/header'
 
 export default {
   name: 'Home',
