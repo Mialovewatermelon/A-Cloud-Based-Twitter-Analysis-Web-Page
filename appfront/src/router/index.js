@@ -6,6 +6,7 @@ import piechart from '@/components/piechart'
 import statical from '@/components/statical'
 import analysis from '@/view/analysis'
 import homePage from '@/view/homePage'
+import map from '@/components/map'
 Vue.use(Router)
 
 export default new Router({
@@ -20,6 +21,11 @@ export default new Router({
       path: '/Home',
       name: 'Home',
       component: Home
+    },
+    {
+      path: '/map',
+      name: 'map',
+      component: map
     },
 
     {
