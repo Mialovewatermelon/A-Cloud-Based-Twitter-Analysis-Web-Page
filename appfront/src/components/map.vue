@@ -1,12 +1,9 @@
 <template>
   <div class="container mt-4">
-    <h2 class="text-center text-secondary pb-2">Australia Map</h2>
+     <dv-decoration-11 style="width:500px;height:80px;" class="title">Percentage of Chinese Population Over the State Population</dv-decoration-11>
     <div class="map-container border rounded">
-      <ul class="nav justify-content-center border-bottom">
-        <!--營運地區 nav-->
-      </ul>
       <!--地圖呈現在此-->
-      <div class="google-map" id="map"></div>
+      <div class="google-map" id="map1"></div>
     </div>
   </div>
 </template>
@@ -31,7 +28,7 @@ export default {
   },
   data () {
     return {
-      mapAddress: '../../static/' + this.mapName
+      mapAddress: '../static/' + this.mapName
     }
   },
   mounted () {
@@ -41,13 +38,15 @@ export default {
   methods: {
     // 建立地圖
     initMap () {
-      let myChart = this.$echarts.init(document.getElementById('map'))
+      console.log('map created!')
+      let myChart = this.$echarts.init(document.getElementById('map1'))
       myChart.showLoading()
 
       // eslint-disable-next-line no-undef
-      this.$axios.get('../../static/state.json').then(response => {
+      this.axios.get(this.mapAddress).then(response => {
         myChart.hideLoading()
         console.log(response)
+        console.log('map here!')
         let features = response.data.features
         console.log(response)
         features.forEach(element => {
@@ -71,15 +70,15 @@ export default {
             showDelay: 0,
             transitionDuration: 0.2,
             formatter: function (params) {
-              var value = (params.value + '').split('.')
-              value = value[0].replace(/(\d{1,3})(?=(?:\d{3})+(?!\d))/g, '$1,')
+              var value = (params.value * 100).toFixed(2) + '%'
+              // value = value[0].replace(/(\d{1,3})(?=(?:\d{3})+(?!\d))/g, '$1,')
               return params.seriesName + '<br/>' + params.name + ': ' + value
             }
           },
           visualMap: {
             left: 'right',
             min: 0,
-            max: this.minValue,
+            max: 0.030982,
             inRange: {
               color: [
                 '#313695',
@@ -96,7 +95,10 @@ export default {
               ]
             },
             text: ['High', 'Low'], // 文本，默认为数值文本
-            calculable: true
+            calculable: false,
+            textStyle: {
+              color: 'white'
+            }
           },
           toolbox: {
             show: true,
@@ -104,14 +106,12 @@ export default {
             left: 'left',
             top: 'top',
             feature: {
-              dataView: { readOnly: false },
-              restore: {},
-              saveAsImage: {}
+              restore: {}
             }
           },
           series: [
             {
-              name: 'victoria area',
+              name: 'Australia map',
               type: 'map',
               roam: true,
               map: 'vic',
@@ -124,7 +124,16 @@ export default {
               textFixed: {
                 Alaska: [20, -20]
               },
-              data: this.mapData
+              data: [
+                {name: 'New South Wales', value: 0.030982},
+                {name: 'Queensland', value: 0.009793},
+                {name: 'South Australia', value: 0.014637},
+                {name: 'Tasmania', value: 0.00607},
+                {name: 'Northern Territory', value: 0.004734},
+                {name: 'Victoria', value: 0.010755},
+                {name: 'Australian Capital Territory', value: 0.028276},
+                {name: 'Western Australia', value: 0.010755}
+              ]
             }
           ]
         }
@@ -139,7 +148,17 @@ export default {
 
 <style scoped>
 .google-map {
-  width: 500px;
-  height: 300px;
+  width: 800px;
+  height: 800px;
+  margin-left: 50px;
 }
+.title {
+    font-weight: 700;
+    font-size: 20px;
+    width: 200px;
+    height: 60px;
+    display: block;
+    margin: 0 auto;
+    color: white
+  }
 </style>

@@ -3,13 +3,13 @@
     <div class="box-item">
       <dv-border-box-1>
         <dv-decoration-11 style="width:200px;height:60px;" class="title">PIE CHART</dv-decoration-11>
-        <piechart :pieChartData="pieChartData"></piechart>
+        <piechart :election="election"></piechart>
       </dv-border-box-1>
     </div>
-    <div clas="box-item">
+    <div class="box-item">
       <dv-border-box-1>
         <dv-decoration-11 style="width:250px;height:60px;" class="title">STATICAL RATING</dv-decoration-11>
-        <statical :staticalData="staticalData"></statical>
+        <piechart2 :ageData="ageData"></piechart2>
       </dv-border-box-1>
     </div>
   </div>
@@ -17,35 +17,14 @@
 
 <script>
 import piechart from '../components/piechart'
-import statical from '../components/statical'
+import piechart2 from '../components/piechart2'
 export default {
   props: {
-    pieChartData: {
-      type: Array,
-      // eslint-disable-next-line vue/require-valid-default-prop
-      default: [
-        { value: 25, name: '河北' },
-        { value: 20, name: '江苏' },
-        { value: 35, name: '浙江' },
-        { value: 30, name: '四川' },
-        { value: 40, name: '湖北' }
-      ]
+    election: {
+      type: Array
     },
-    staticalData: {
-      type: Array,
-      // eslint-disable-next-line vue/require-valid-default-prop
-      default: [
-        ['number', 'amount', 'product'],
-        [89.3, 58212, 'Matcha Latte'],
-        [57.1, 78254, 'Milk Tea'],
-        [74.4, 41032, 'Cheese Cocoa'],
-        [50.1, 12755, 'Cheese Brownie'],
-        [89.7, 20145, 'Matcha Cocoa'],
-        [68.1, 79146, 'Tea'],
-        [19.6, 91852, 'Orange Juice'],
-        [10.6, 101852, 'Lemon Juice'],
-        [32.7, 20112, 'Walnut Brownie']
-      ]
+    ageData: {
+      type: Array
     }
   },
 
@@ -56,7 +35,7 @@ export default {
   name: 'left',
   components: {
     piechart,
-    statical
+    piechart2
   }
 }
 </script>

@@ -7,6 +7,8 @@ import statical from '@/components/statical'
 import analysis from '@/view/analysis'
 import homePage from '@/view/homePage'
 import map from '@/components/map'
+import emotion from '@/components/emotion'
+import piechart2 from '@/components/piechart2'
 Vue.use(Router)
 
 export default new Router({
@@ -27,6 +29,12 @@ export default new Router({
       name: 'map',
       component: map
     },
+    {
+      path: '/piechart2',
+      name: 'piechart2',
+      component: piechart2
+
+    },
 
     {
       path: '/Try',
@@ -42,6 +50,12 @@ export default new Router({
       path: '/statical',
       name: 'statical',
       component: statical
+    },
+    {
+      path: '/emotion',
+      name: 'emotion',
+      component: emotion
+
     },
     {
       path: '/analysis',

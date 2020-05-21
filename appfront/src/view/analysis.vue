@@ -3,25 +3,26 @@
     <div class="home">
       <header_com></header_com>
       <el-row>
-        <el-button type="primary" @click="getPieData">VIC</el-button>
-        <el-button type="primary">NSW</el-button>
-        <el-button type="primary">Tasmania</el-button>
-        <el-button type="primary" >Queensland</el-button>
-        <el-button type="primary" >Western Australia</el-button>
-        <el-button type="primary">South Australia</el-button>
+        <el-button type="primary" @click="getPieData('vic')">VIC</el-button>
+        <el-button type="primary" @click="getPieData('nsw')">NSW</el-button>
+        <el-button type="primary" @click="getPieData('tas')">Tasmania</el-button>
+        <el-button type="primary" @click="getPieData('queens')" >Queensland</el-button>
+        <el-button type="primary" @click="getPieData('western')">Western Australia</el-button>
+        <el-button type="primary" @click="getPieData('southern')">South Australia</el-button>
       </el-row>
       <el-row type="flex" class="row-bg" justify="center">
         <!-- <el-col :span="2"><el-button type="primary" @click="getPieData" style="float:left; margin: 2px;">新增</el-button></el-col> -->
         <el-col :span="7">
-          <leftGraph :FrequentWord="FrequentWord" :staticalData="staticalData"></leftGraph>
+          <leftGraph :election="election" :ageData="ageData"></leftGraph>
         </el-col>
-        <el-col :span="12">
-          <dv-border-box-8></dv-border-box-8>
+        <el-col :span="11">
+          <dv-border-box-8>
+            <map_com></map_com>
+          </dv-border-box-8>
         </el-col>
-        <el-col :span="5">
-          <dv-border-box-9>
-            <rightGraph></rightGraph>
-          </dv-border-box-9>
+        <el-col :span="6">
+            <emotionRight :LabelData="LabelData" :LabelData_China="LabelData_China"></emotionRight>
+        </el-col>
       </el-row>
     </div>
   </div>
@@ -32,29 +33,31 @@ import header from '../part/header'
 import map from '../components/map'
 import leftGraph from '../part/leftGraph'
 import rightGraph from '../part/rightGraph'
+import emotionRight from '../part/emotionRight'
+import piechart2 from '../components/piechart2'
 
 export default {
   data () {
     return {
-
-      FrequentWord: [
-        { value: 80, name: '云南' },
-        { value: 5, name: '北京' },
-        { value: 25, name: '河北' },
-        { value: 20, name: '江苏' },
-        { value: 35, name: '浙江' },
-        { value: 30, name: '四川' },
-        { value: 40, name: '湖北' }
+      election: [
+        { value: 80, name: 'Labour' },
+        { value: 5, name: 'Liberal' },
+        { value: 25, name: 'National' }
       ],
 
-      staticalData: [
-        ['number', 'amount', 'product'],
-        [89.3, 58212, 'Matcha Latte'],
-        [57.1, 78254, 'Milk Tea'],
-        [74.4, 41032, 'Cheese Cocoa'],
-        [50.1, 12755, 'Cheese Brownie'],
-        [89.7, 20145, 'Matcha Cocoa'],
-        [68.1, 79146, 'Tea']
+      ageData: [
+        {value: 80, name: '0-10'},
+        {value: 200, name: '11-30'},
+        {value: 120, name: '31-55'},
+        {value: 100, name: 'over 56'}
+      ],
+      LabelData: [
+        {name: 'positive', value: 100},
+        {name: 'negative', value: 200}
+      ],
+      LabelData_China: [
+        {name: 'positive', value: 300},
+        {name: 'negative', value: 400}
       ]
     }
   },
@@ -63,18 +66,23 @@ export default {
     header_com: header,
     map_com: map,
     leftGraph,
-    rightGraph
+    emotionRight,
+    rightGraph,
+    piechart2
     // piechart_com2: piechart
   },
   methods: {
     // 从后段调取接口更新数据
-    getPieData () {
+    getPieData (state) {
       console.log('I click!!')
-      this.axios.get('http://127.0.0.1:8080/api/get_data?state=vic').then(response => {
+      this.axios.get('http://127.0.0.1:8000/api/get_data?state=' + state).then(response => {
         var res = response.data
         console.log(res)
         if (res.error_num === 0) {
-          this.FrequentWord = res['FrequentWord']
+          this.election = res['election']
+          this.ageData = res['ageData']
+          this.LabelData = res['LabelData']
+          this.LabelData_China = res['LsbelData_China']
         }
       })
     }

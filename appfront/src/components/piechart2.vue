@@ -1,11 +1,11 @@
 <template>
-  <div id="piecharts" class="myecharts"></div>
+  <div id="piecharts2" class="agechart"></div>
 </template>
 
 <script>
 export default {
   props: {
-    pieChartData: {
+    ageData: {
       type: Array,
       // eslint-disable-next-line vue/require-valid-default-prop
       default: [
@@ -29,10 +29,10 @@ export default {
   },
   // 如果pieChartData 更新了值则需要刷新数据
   watch: {
-    pieChartData: {
+    ageData: {
       handler (newVal, oldVal) {
         console.log('hello')
-        if (this.pieChartData) {
+        if (this.ageData) {
           if (newVal) {
             this.option.series[0].data = newVal
             // this.option.legend.data = newVal.name
@@ -53,66 +53,55 @@ export default {
   mounted () {
     this.drawECharts()
   },
-  name: 'piechart',
+  name: 'piechart2',
   methods: {
-    // 调用后段借口获取最新的信息
-    // applyData () {
-    //   this.axios.get('http://127.0.0.1:8000/api/get_geodata').then(response => {
-    //     var res = response.data
-    //     if (res.error_num === 0) {
-    //       this.pieChartData = res['pieChartData']
-    //       this.option.series[0].data = this.pieChartData
-    //       this.option.legend.data = this.pieChartData.name
-    //       this.chart.setOption(this.option, true)
-    //     } else {
-    //       this.$message.error('failed')
-    //     }
-    //   })
-    // },
-
     drawECharts () {
       this.chart = this.$echarts.init(
-        document.getElementById('piecharts'),
+        document.getElementById('piecharts2'),
         'temp'
       )
       this.option = {
         tooltip: {
           trigger: 'item',
-          formatter: '{a} <br/>{b}: {c} ({d}%)'
+          formatter: '{a} <br/>{b} : {c} ({d}%)'
         },
         legend: {
-          orient: 'vertical',
-          left: 10,
-          // eslint-disable-next-line no-undef
-          data: this.pieChartData.name,
+          left: 'center',
+          top: 'bottom',
+          data: this.ageData,
           textStyle: {
             color: 'white'
           }
         },
+        toolbox: {
+          show: true,
+          feature: {
+            mark: {show: true},
+            magicType: {
+              show: true,
+              type: ['pie', 'funnel']
+            }
+          }
+        },
         series: [
           {
-            name: 'Political Party Voting Distribution',
+            name: 'Age Distribution',
             type: 'pie',
-            radius: ['50%', '70%'],
-            avoidLabelOverlap: false,
+            radius: [40, 150],
+            center: ['50%', '30%'],
+            roseType: 'area',
             label: {
-              show: false,
-              position: 'center'
+              show: false
             },
             emphasis: {
               label: {
-                show: true,
-                fontSize: '30',
-                fontWeight: 'bold'
+                show: true
               }
             },
-            labelLine: {
-              show: false
-            },
-            // eslint-disable-next-line no-undef
-            data: this.pieChartData
+            data: this.ageData
           }
         ]
+
       }
 
       if (this.option && typeof this.option === 'object') {
@@ -127,8 +116,8 @@ export default {
 </script>
 
 <style scoped>
-.myecharts {
-  width: 500px;
+.agechart {
+  width: 600px;
   height: 400px;
 }
 </style>
