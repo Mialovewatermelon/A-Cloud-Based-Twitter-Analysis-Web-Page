@@ -26,7 +26,7 @@ SECRET_KEY = '#%v68)hz%e(#-y(zu($sq+$^iew=ig2kd1ws3py*+b$%du^*r_'
 #DEBUG = False
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'web']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition

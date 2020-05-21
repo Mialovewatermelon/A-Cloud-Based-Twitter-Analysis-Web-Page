@@ -7,7 +7,6 @@ from django.http import HttpResponse
 from myapp import couchdb_url
 import json
 import os
-import sys
 
 path = os.getcwd()
 
@@ -66,11 +65,6 @@ def get_data(request):
     try:
         for state in states:
             if request.GET.get('state') == state:
-                print(state)
-                print(sys.argv)
-                print(output['output_'+state])
-                print(get_view_data(DB, state, 'tweeterData/pos'))
-                print(int(output['output_'+state]['pos']) + int(get_view_data(DB, state, 'tweeterData/pos')))
                 response['LabelData'] = [
                     {'name': 'positive',
                      'value': int(output['output_'+state]['pos']) + int(get_view_data(DB, state, 'tweeterData/pos'))},
