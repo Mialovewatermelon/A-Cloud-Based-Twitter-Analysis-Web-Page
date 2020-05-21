@@ -6,14 +6,18 @@ from django.http import JsonResponse
 from django.http import HttpResponse
 from myapp import couchdb_url
 import json
+import os
+import sys
 
-with open('./analysis.json', encoding='utf-8') as f:
+path = os.getcwd()
+
+with open(path+'/myapp/analysis.json', encoding='utf-8') as f:
     output = json.load(f)
-with open('./china.json', encoding='utf-8') as f:
+with open(path+'/myapp/china.json', encoding='utf-8') as f:
     china_output = json.load(f)
-with open('./age_distribution.json', encoding='utf-8') as f:
+with open(path+'/myapp/age_distribution.json', encoding='utf-8') as f:
     age = json.load(f)
-with open('./election.json', encoding='utf-8') as f:
+with open(path+'/myapp/election.json', encoding='utf-8') as f:
     election = json.load(f)
 
 states = ['vic', 'nsw', 'southern', 'western', 'tas', 'queens']
@@ -55,33 +59,41 @@ def get_geodata(request):
 
 def get_data(request):
     DB = couchdb.Server(couchdb_url.url)
+    print(couchdb_url.url)
+    for i in DB:
+        print(i)
     response={}
     try:
         for state in states:
             if request.GET.get('state') == state:
+                print(state)
+                print(sys.argv)
+                print(output['output_'+state])
+                print(get_view_data(DB, state, 'tweeterData/pos'))
+                print(int(output['output_'+state]['pos']) + int(get_view_data(DB, state, 'tweeterData/pos')))
                 response['LabelData'] = [
                     {'name': 'positive',
-                     'value': output['output_'+state]['pos'] + get_view_data(DB, state, 'tweeterData/pos')},
+                     'value': int(output['output_'+state]['pos']) + int(get_view_data(DB, state, 'tweeterData/pos'))},
                     {'name': 'negtive',
-                     'value': output['output_' + state]['neg'] + get_view_data(DB, state, 'tweeterData/neg')}
+                     'value': int(output['output_' + state]['neg']) + int(get_view_data(DB, state, 'tweeterData/neg'))}
                     ]
                 response['LabelData_China'] = [
                     {'name': 'China positive',
-                     'value': china_output['output_'+state]['pos'] + get_view_data(DB, state, 'tweeterData/china_pos')},
+                     'value': int(china_output['output_'+state]['pos']) + get_view_data(DB, state, 'tweeterData/china_pos')},
                     {'name': 'China negtive',
-                     'value': china_output['output_' + state]['neg'] + get_view_data(DB, state, 'tweeterData/china_neg')}
+                     'value': int(china_output['output_' + state]['neg']) + get_view_data(DB, state, 'tweeterData/china_neg')}
                     ]
                 response['TextData_pos'] = [
-                    get_view_data(DB,state,'tweeterData/pos_text')
+                    get_view_data(DB,state,'tweeterData/pos_text',type='text')
                 ]
                 response['TextData_neg'] = [
-                    get_view_data(DB,state,'tweeterData/neg_text')
+                    get_view_data(DB,state,'tweeterData/neg_text',type='text')
                 ]
                 response['TextData_china_pos'] = [
-                    get_view_data(DB, state, 'tweeterData/china_pos_text')
+                    get_view_data(DB, state, 'tweeterData/china_pos_text',type='text')
                 ]
                 response['TextData_china_neg'] = [
-                    get_view_data(DB, state, 'tweeterData/china_neg_text')
+                    get_view_data(DB, state, 'tweeterData/china_neg_text',type='text')
                 ]
                 response['ageData'] = [
                     {'name': '0~14 years old', 'value': age[state]['persons_0_14_percentage']},
@@ -89,8 +101,8 @@ def get_data(request):
                     {'name': '65+ years old', 'value': age[state]["persons_65_plus_percentage"]}
                 ]
                 response['election'] = [
-                    {'name': 'labor party', 'value': election['australian_labor_party_votes']},
-                    {'name': 'national coalition', 'value': election["liberal_national_coalition_votes"]}
+                    {'name': 'labor party', 'value': election[state]['australian_labor_party_votes']},
+                    {'name': 'national coalition', 'value': election[state]["liberal_national_coalition_votes"]}
                 ]
                 response['msg']='Success'
                 response['msg']=0

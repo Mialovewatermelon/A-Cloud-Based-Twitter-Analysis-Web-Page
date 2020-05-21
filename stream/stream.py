@@ -2,8 +2,11 @@ import json
 import TwitterAPI
 import database
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
+import sys
 
-data = json.load(open('config.json', encoding='utf-8'))
+path = sys.argv[0][:-9]
+
+data = json.load(open(path + '/config.json', encoding='utf-8'))
 
 api_key = data['api_key']
 api_secret = data['api_secret']
