@@ -5,7 +5,7 @@
 <script>
 export default {
   props: {
-    pieChartData: {
+    election: {
       type: Array,
       // eslint-disable-next-line vue/require-valid-default-prop
       default: [
@@ -29,10 +29,10 @@ export default {
   },
   // 如果pieChartData 更新了值则需要刷新数据
   watch: {
-    pieChartData: {
+    election: {
       handler (newVal, oldVal) {
         console.log('hello')
-        if (this.pieChartData) {
+        if (this.election) {
           if (newVal) {
             this.option.series[0].data = newVal
             // this.option.legend.data = newVal.name
@@ -84,7 +84,7 @@ export default {
           orient: 'vertical',
           left: 10,
           // eslint-disable-next-line no-undef
-          data: this.pieChartData.name,
+          data: this.election.name,
           textStyle: {
             color: 'white'
           }
@@ -110,7 +110,7 @@ export default {
               show: false
             },
             // eslint-disable-next-line no-undef
-            data: this.pieChartData
+            data: this.election
           }
         ]
       }

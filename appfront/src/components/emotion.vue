@@ -35,7 +35,7 @@ export default {
 
   data () {
     return {
-      smileFace: require('../assets/smile.jpg'),
+      smileFace: require('../assets/sad2.png'),
       sadFace: require('../assets/sad.png'),
       config1: {
         number: [100],

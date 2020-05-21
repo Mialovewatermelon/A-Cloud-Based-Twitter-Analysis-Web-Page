@@ -34,7 +34,6 @@ import map from '../components/map'
 import leftGraph from '../part/leftGraph'
 import rightGraph from '../part/rightGraph'
 import emotionRight from '../part/emotionRight'
-import piechart2 from '../components/piechart2'
 
 export default {
   data () {
@@ -67,20 +66,21 @@ export default {
     map_com: map,
     leftGraph,
     emotionRight,
-    rightGraph,
-    piechart2
+    rightGraph
     // piechart_com2: piechart
   },
   methods: {
     // 从后段调取接口更新数据
     getPieData (state) {
       console.log('I click!!')
-      this.axios.get('http://127.0.0.1:8000/api/get_data?state=' + state).then(response => {
+      this.axios.get('http://127.0.0.1:8080/api/get_data?state=' + state).then(response => {
         var res = response.data
         console.log(res)
-        if (res.error_num === 0) {
+        if (res.msg === 0) {
           this.election = res['election']
+          console.log('>>>>' + this.election)
           this.ageData = res['ageData']
+          console.log('>>>>' + this.ageData)
           this.LabelData = res['LabelData']
           this.LabelData_China = res['LsbelData_China']
         }
