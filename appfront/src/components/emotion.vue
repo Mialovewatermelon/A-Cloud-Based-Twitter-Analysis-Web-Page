@@ -15,9 +15,11 @@
         </el-row>
         <el-row type="flex" class="row-bg" justify="center">
             <el-col>
+               <p style="font-size: 20px; color:#3de7c9; margin-right:10px"> Postive</p>
                 <p class='item' style="font-size: 30px; color:#3de7c9; margin-right: 40px">{{LabelData[0].value}}</p>
             </el-col>
             <el-col>
+                  <p style="font-size: 20px; color:#3de7c9;margin-left:5px"> Negative</p>
                  <p class='item' style="font-size: 30px; color:#3de7c9">{{LabelData[1].value}}</p>
             <el-col>
         </el-row>
