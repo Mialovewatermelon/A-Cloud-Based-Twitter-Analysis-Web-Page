@@ -10,7 +10,9 @@ import echarts from 'echarts'
 import axios from 'axios'
 import Qs from 'qs'
 import dataV from '@jiaminghi/data-view'
+import VueParticles from 'vue-particles'
 
+Vue.use(VueParticles)
 Vue.use(dataV)
 Vue.use(ElementUI)
 

@@ -1,15 +1,70 @@
 <template>
     <div class='homePage'>
+      <vue-particles style="width:100%; height: 100%; position: absolute" color="#dedede"
+                   :particleOpacity="0.7"
+                   :particlesNumber="80"
+                   shapeType="circle"
+                   :particleSize="4"
+                   linesColor="#dedede"
+                   :linesWidth="1"
+                   :lineLinked="true"
+                   :lineOpacity="0.4"
+                   :linesDistance="150"
+                   :moveSpeed="3"
+                   :hoverEffect="true"
+                   hoverMode="grab"
+                   :clickEffect="true"
+                   clickMode="push">
+    </vue-particles>
+    <div class="login">
+      <div class="login-center">
+        <dv-border-box-7>
+        <p>CCC Assignment 2<b>Using Twitter and Aurin to Analyze Data</b></p>
+        <p>Team Members: xxxx</p>
+        <el-button @click="openPage">Begin Your Journey Here</el-button>
+        </dv-border-box-7>
+      </div>
     </div>
 </template>
+
+<script>
+export default {
+  name: 'homePage',
+  methods: {
+    openPage () {
+      this.$router.push('/analysis')
+    }
+  }
+}
+</script>
 
 <style scoped>
  .homePage {
     width: 100%;
     height: 100%;
+    position:absolute;
     background-color: black;
     background-repeat: non-repeat;
     background-size: cover;
     padding-bottom: 5%;
+  }
+   .login {
+    position: relative;
+    width: 600px;
+    margin: 0 auto;
+    z-index: 100000;
+   }
+  .login-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+    height: 250px;
+    z-index: 100000;
+  }
+  p {
+    font-size: 30px;
+    color: white;
   }
 </style>
