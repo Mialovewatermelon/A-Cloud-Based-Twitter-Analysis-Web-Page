@@ -1,1 +1,1 @@
-url = "http://admin:admin@172.26.134.99:5984/"
+url = "http://admin:admin@172.26.131.210:5984/"

@@ -65,30 +65,26 @@ def get_data(request):
     try:
         for state in states:
             if request.GET.get('state') == state:
+                pos_num = int(output['output_'+state]['pos']) + int(get_view_data(DB, state, 'tweeterData/pos'))
+                neg_num = int(output['output_'+state]['neg']) + int(get_view_data(DB, state, 'tweeterData/neg'))
+                china_pos_num = int(china_output['output_'+state]['pos']) + get_view_data(DB, state, 'tweeterData/china_pos')
+                china_neg_num = int(china_output['output_' + state]['neg']) + get_view_data(DB, state, 'tweeterData/china_neg')
                 response['LabelData'] = [
                     {'name': 'positive',
-                     'value': int(output['output_'+state]['pos']) + int(get_view_data(DB, state, 'tweeterData/pos'))},
+                     'value': '%.2f%%' % (100*pos_num/(pos_num+neg_num))},
                     {'name': 'negtive',
-                     'value': int(output['output_' + state]['neg']) + int(get_view_data(DB, state, 'tweeterData/neg'))}
+                     'value': '%.2f%%' % (100*neg_num/(pos_num+neg_num))}
                     ]
                 response['LabelData_China'] = [
                     {'name': 'China positive',
-                     'value': int(china_output['output_'+state]['pos']) + get_view_data(DB, state, 'tweeterData/china_pos')},
+                     'value': '%.2f%%' % (100*china_pos_num/(china_pos_num+china_neg_num))},
                     {'name': 'China negtive',
-                     'value': int(china_output['output_' + state]['neg']) + get_view_data(DB, state, 'tweeterData/china_neg')}
+                     'value': '%.2f%%' % (100*china_neg_num/(china_pos_num+china_neg_num))}
                     ]
-                response['TextData_pos'] = [
-                    get_view_data(DB,state,'tweeterData/pos_text',type='text')
-                ]
-                response['TextData_neg'] = [
-                    get_view_data(DB,state,'tweeterData/neg_text',type='text')
-                ]
-                response['TextData_china_pos'] = [
-                    get_view_data(DB, state, 'tweeterData/china_pos_text',type='text')
-                ]
-                response['TextData_china_neg'] = [
-                    get_view_data(DB, state, 'tweeterData/china_neg_text',type='text')
-                ]
+                response['TextData_pos'] = get_view_data(DB,state,'tweeterData/pos_text',type='text')
+                response['TextData_neg'] = get_view_data(DB,state,'tweeterData/neg_text',type='text')
+                response['TextData_china_pos'] = get_view_data(DB, state, 'tweeterData/china_pos_text',type='text')
+                response['TextData_china_neg'] = get_view_data(DB, state, 'tweeterData/china_neg_text',type='text')
                 response['ageData'] = [
                     {'name': '0~14 years old', 'value': age[state]['persons_0_14_percentage']},
                     {'name': '15~64 years old', 'value': age[state]['persons_15_64_percentage']},
