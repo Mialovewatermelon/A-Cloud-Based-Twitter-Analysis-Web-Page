@@ -76,7 +76,7 @@ export default {
             }
           },
           visualMap: {
-            left: 'right',
+            show: false,
             min: 0,
             max: 0.030982,
             inRange: {
@@ -113,7 +113,7 @@ export default {
             {
               name: 'Australia map',
               type: 'map',
-              roam: true,
+              roam: false,
               map: 'vic',
               emphasis: {
                 label: {

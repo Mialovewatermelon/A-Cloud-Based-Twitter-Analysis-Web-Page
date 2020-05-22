@@ -11,7 +11,7 @@
             <dv-decoration-2 style="height:5px;display: block;" />
         </div>
         <div class="box-item-subsubtitle">
-              <dv-decoration-11 style="width:300px;height:80px;" class="title">China Related Emotion Analysis</dv-decoration-11>
+              <dv-decoration-11 style="width:300px;height:80px;" class="title">China Related Emotion Analysis for {{state}}</dv-decoration-11>
         </div>
       <div class="box-item">
           <emotion :LabelData="LabelData_China"></emotion>
@@ -42,6 +42,10 @@ export default {
         {name: 'positive', value: 300},
         {name: 'negative', value: 400}
       ]
+    },
+    state: {
+      type: String,
+      default: 'Victoria'
     }
 
   },

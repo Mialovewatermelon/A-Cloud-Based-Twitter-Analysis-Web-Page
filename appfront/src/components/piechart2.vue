@@ -68,7 +68,7 @@ export default {
         legend: {
           left: 'center',
           top: 'bottom',
-          data: this.ageData,
+          data: this.ageData.name,
           textStyle: {
             color: 'white'
           }
@@ -91,7 +91,7 @@ export default {
             center: ['50%', '30%'],
             roseType: 'area',
             label: {
-              show: false
+              show: true
             },
             emphasis: {
               label: {
