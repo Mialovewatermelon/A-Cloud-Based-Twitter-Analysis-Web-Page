@@ -77,6 +77,9 @@ export default {
       ]
     }
   },
+  mounted () {
+    this.getPieData('vic', 'Victoria')
+  },
   name: 'analysis',
   components: {
     header_com: header,
