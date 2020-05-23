@@ -25,7 +25,7 @@
         </el-col>
       </el-row>
       <el-row>
-        <textBelow :TextData_pos="TextData_pos" :TextData_neg="TextData_neg"></textBelow>
+        <textBelow :TextData_pos="TextData_pos" :TextData_neg="TextData_neg" :TextData_china_pos="TextData_china_pos" :TextData_china_neg="TextData_china_neg"></textBelow>
       </el-row>
     </div>
   </div>
@@ -60,21 +60,11 @@ export default {
         {name: 'negative', value: 8}
       ],
       state: 'Victoria',
-      TextData_pos: [
-        '@smerkaliscious Lol ok but I’ve had some GNs 👍🏼😜 - I’d love to hun but not sure if I can cross the boarders yet - b… https://t.co/8H7wdNKMTI',
-        '@DancingDanB @MoVidaMelbourne When I was there I found it easier to find good vegetarian food in Barcelona, than an… https://t.co/YuBqrOT4py',
-        '@Dococtplays All good my man \nI’m just trying to connect with good people 🤙🏽',
-        '@kayenini Awesome  hun - don’t let 1 person that can’t take a joke put you off - the true genuine friends will stick by you and enjoy - 👍🏼❤️',
-        '@mrcjohnston @3RRRFM The Rasta shorts getting a work out in iso CJ? Hope ya well cobs 🐨🦁❤️'
+      TextData_pos: [ ],
+      TextData_neg: [],
+      TextData_china_pos: [],
+      TextData_china_neg: []
 
-      ],
-      TextData_neg: [
-        "@ujaybaba Bro I'm wheezing right now 😭😭😭",
-        "@ujaybaba Bro I'm wheezing right now 😭😭😭",
-        '@ProudSocialist Yeah. \nIt’s always been fucking ugly... take it from the rest of the world who have got the shits with you lot...😤',
-        'Trump Tests Extremely Negative for Corona: https://t.co/ab1RLmXvhd \n#COVID19',
-        'In three words describe the left. \n- Hypocrites\n- Liars\n- Degenerates'
-      ]
     }
   },
   mounted () {
@@ -108,6 +98,8 @@ export default {
           this.LabelData_China = res['LabelData_China']
           this.TextData_pos = res['TextData_pos']
           this.TextData_neg = res['TextData_neg']
+          this.TextData_china_pos = res['TextData_china_pos']
+          this.TextData_china_neg = res['TextData_china_neg']
         }
       })
     }

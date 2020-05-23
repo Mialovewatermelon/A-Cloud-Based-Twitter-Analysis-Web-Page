@@ -7,12 +7,24 @@
             <p>{{TextData_pos[2]}}</p>
             <p>{{TextData_pos[3]}}</p>
             <p>{{TextData_pos[4]}}</p>
-            <dv-decoration-11 style="width:500px;height:80px;" class="title">Recent Positive Emotion Text</dv-decoration-11>
+            <dv-decoration-11 style="width:500px;height:80px;" class="title">Recent Negtive Emotion Text</dv-decoration-11>
             <p>{{TextData_neg[0]}}</p>
             <p>{{TextData_neg[1]}}</p>
             <p>{{TextData_neg[2]}}</p>
             <p>{{TextData_neg[3]}}</p>
             <p>{{TextData_neg[4]}}</p>
+            <dv-decoration-11 style="width:500px;height:80px;" class="title">Recent Positive Emotion Text About China</dv-decoration-11>
+            <p>{{TextData_china_pos[0]}}</p>
+            <p>{{TextData_china_pos[1]}}</p>
+            <p>{{TextData_china_pos[2]}}</p>
+            <p>{{TextData_china_pos[3]}}</p>
+            <p>{{TextData_china_pos[4]}}</p>
+            <dv-decoration-11 style="width:500px;height:80px;" class="title">Recent Negtive Emotion Text About China</dv-decoration-11>
+            <p>{{TextData_china_neg[0]}}</p>
+            <p>{{TextData_china_neg[1]}}</p>
+            <p>{{TextData_china_neg[2]}}</p>
+            <p>{{TextData_china_neg[3]}}</p>
+            <p>{{TextData_china_neg[4]}}</p>
         </dv-border-box-6>
     </div>
 </template>
@@ -43,6 +55,18 @@ export default {
         'Trump Tests Extremely Negative for Corona: https://t.co/ab1RLmXvhd \n#COVID19',
         'In three words describe the left. \n- Hypocrites\n- Liars\n- Degenerates'
 
+      ]
+    },
+    TextData_china_pos: {
+      type: Array,
+      // eslint-disable-next-line vue/require-valid-default-prop
+      default: [
+      ]
+    },
+    TextData_china_neg: {
+      type: Array,
+      // eslint-disable-next-line vue/require-valid-default-prop
+      default: [
       ]
     }
   }
