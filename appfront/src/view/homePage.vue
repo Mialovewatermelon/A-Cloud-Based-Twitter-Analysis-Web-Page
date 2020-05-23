@@ -19,7 +19,7 @@
     <div class="login">
       <div class="login-center">
         <dv-border-box-7>
-        <p>CCC Assignment 2<b>Using Twitter and Aurin to Analyze Data</b></p>
+        <p>CCC Assignment 2<br>Using Twitter and Aurin to Analyze Data</p>
         <p>Team Members: xxxx</p>
         <el-button @click="openPage">Begin Your Journey Here</el-button>
         </dv-border-box-7>

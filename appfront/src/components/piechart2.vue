@@ -56,10 +56,11 @@ export default {
   name: 'piechart2',
   methods: {
     drawECharts () {
-      this.chart = this.$echarts.init(
+      let myChart = this.$echarts.init(
         document.getElementById('piecharts2'),
         'temp'
       )
+      this.chart = myChart
       this.option = {
         tooltip: {
           trigger: 'item',
@@ -106,9 +107,10 @@ export default {
 
       if (this.option && typeof this.option === 'object') {
         this.chart.setOption(this.option, true)
-        // window.addEventListener('resize', function () {
-        //   this.chart.resize()
-        // })
+        window.onresize = function () {
+          console.log('resizing now ')
+          myChart.resize()
+        }
       }
     }
   }
@@ -117,7 +119,7 @@ export default {
 
 <style scoped>
 .agechart {
-  width: 600px;
+  width: 100%;
   height: 400px;
 }
 </style>
