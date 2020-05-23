@@ -1,18 +1,16 @@
 <template>
   <dv-border-box-3 class="border-box-content">
     <div class="container-item">
-        <div class="box-item-subtitle">
-            <dv-decoration-11 style="width:300px;height:80px;" class="title">Overall Emotion Analysis</dv-decoration-11>
-        </div>
+
+        <dv-decoration-11 style="width:80%;height:80px; margin-top:10px" class="title">Overall Emotion Analysis</dv-decoration-11>
+
       <div class="box-item">
           <emotion :LabelData="LabelData"></emotion>
       </div>
         <div class="box-item">
             <dv-decoration-2 style="height:5px;display: block;" />
         </div>
-        <div class="box-item-subsubtitle">
-              <dv-decoration-11 style="width:300px;height:80px;" class="title">China Related Emotion Analysis for {{state}}</dv-decoration-11>
-        </div>
+          <dv-decoration-11 style="width:80%;height:80px;" class="title">China Related Emotion Analysis for {{state}}</dv-decoration-11>
       <div class="box-item">
           <emotion :LabelData="LabelData_China"></emotion>
       </div>

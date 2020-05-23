@@ -71,10 +71,11 @@ export default {
     // },
 
     drawECharts () {
-      this.chart = this.$echarts.init(
+      let myChart = this.$echarts.init(
         document.getElementById('piecharts'),
         'temp'
       )
+      this.chart = myChart
       this.option = {
         tooltip: {
           trigger: 'item',
@@ -117,9 +118,10 @@ export default {
 
       if (this.option && typeof this.option === 'object') {
         this.chart.setOption(this.option, true)
-        // window.addEventListener('resize', function () {
-        //   this.chart.resize()
-        // })
+        window.onresize = function () {
+          console.log('resizing now ')
+          myChart.resize()
+        }
       }
     }
   }
@@ -128,7 +130,7 @@ export default {
 
 <style scoped>
 .myecharts {
-  width: 500px;
-  height: 400px;
+  width: 100%;
+  height: 50vh;
 }
 </style>

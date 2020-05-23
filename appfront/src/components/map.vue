@@ -1,6 +1,6 @@
 <template>
   <div class="container mt-4">
-     <dv-decoration-11 style="width:500px;height:80px;" class="title">Percentage of Chinese Population Over the State Population</dv-decoration-11>
+     <dv-decoration-11 style="width:80%;height:80px;" class="title">Percentage of Chinese Population Over the State Population</dv-decoration-11>
     <div class="map-container border rounded">
       <!--地圖呈現在此-->
       <div class="google-map" id="map1"></div>
@@ -139,6 +139,10 @@ export default {
         }
         if (option && typeof option === 'object') {
           myChart.setOption(option, true)
+          window.onresize = function () {
+            console.log('resizing now ')
+            myChart.resize()
+          }
         }
       })
     }
@@ -148,7 +152,7 @@ export default {
 
 <style scoped>
 .google-map {
-  width: 800px;
+  width: 100%;
   height: 800px;
   margin-left: 50px;
 }
