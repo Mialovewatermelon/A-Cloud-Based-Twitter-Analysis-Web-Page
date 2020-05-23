@@ -4,7 +4,7 @@ import listening_information
 import time
 
 host = listening_information.frontend_host
-url_root = 'http://' + host+ '/api/information/get_info?'
+url_root = 'http://' + host + '/api/information/get_info?'
 
 while True:
     instance_num = listening_information.instance_number
