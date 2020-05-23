@@ -134,9 +134,8 @@ def get_information_data(request):
 def send_information_data(request):
     response = {}
     try:
-        instance_num = int(request.GET.get('instance_num'))
-        assert(instance_num in [1,2,3,4])
-        response = instance_object[instance_num - 1]
+        for i in range(4):
+            response['instance' + str(i+1)] = instance_object[i]
 
     except Exception as e:
         response['msg'] = str(e)
