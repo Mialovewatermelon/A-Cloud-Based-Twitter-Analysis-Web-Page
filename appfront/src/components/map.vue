@@ -111,7 +111,7 @@ export default {
           },
           series: [
             {
-              name: 'Australia map',
+              name: 'Chinese people rate',
               type: 'map',
               roam: false,
               map: 'vic',
