@@ -18,4 +18,4 @@ RUN pip3 install psutil
 RUN pip3 install requests
 
 
-CMD [ "python","listening.py" ]
+CMD [ "python","get_information.py" ]
