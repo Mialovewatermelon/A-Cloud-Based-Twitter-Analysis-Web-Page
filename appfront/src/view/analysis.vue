@@ -91,7 +91,7 @@ export default {
     // 从后段调取接口更新数据
     getPieData (state, stateName) {
       console.log('I click!!')
-      this.axios.get('http://localhost/api/get_data?state=' + state).then(response => {
+      this.axios.get('http:/' + this.host + '/api/get_data?state=' + state).then(response => {
         var res = response.data
         this.state = stateName
         console.log(res)
