@@ -10,10 +10,6 @@ import os
 
 path = os.getcwd()
 
-with open(path + '/myapp/analysis.json', encoding='utf-8') as f:
-    output = json.load(f)
-with open(path + '/myapp/china.json', encoding='utf-8') as f:
-    china_output = json.load(f)
 with open(path + '/myapp/age_distribution.json', encoding='utf-8') as f:
     age = json.load(f)
 with open(path + '/myapp/election.json', encoding='utf-8') as f:
@@ -67,12 +63,10 @@ def get_data(request):
     try:
         for state in states:
             if request.GET.get('state') == state:
-                pos_num = int(output['output_' + state]['pos']) + int(get_view_data(DB, state, 'tweeterData/pos'))
-                neg_num = int(output['output_' + state]['neg']) + int(get_view_data(DB, state, 'tweeterData/neg'))
-                china_pos_num = int(china_output['output_' + state]['pos']) + get_view_data(DB, state,
-                                                                                            'tweeterData/china_pos')
-                china_neg_num = int(china_output['output_' + state]['neg']) + get_view_data(DB, state,
-                                                                                            'tweeterData/china_neg')
+                pos_num = int(get_view_data(DB, state, 'tweeterData/pos'))
+                neg_num = int(get_view_data(DB, state, 'tweeterData/neg'))
+                china_pos_num = int(get_view_data(DB, state,'tweeterData/china_pos'))
+                china_neg_num = int(get_view_data(DB, state,'tweeterData/china_neg'))
                 response['LabelData'] = [
                     {'name': 'positive',
                      'value': '%.2f%%' % (100 * pos_num / (pos_num + neg_num))},
