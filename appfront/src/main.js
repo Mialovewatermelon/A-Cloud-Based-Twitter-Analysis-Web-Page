@@ -22,7 +22,6 @@ Vue.use(VueResource)
 Vue.prototype.$echarts = echarts
 Vue.prototype.axios = axios
 Vue.prototype.qs = Qs
-Vue.prototype.host = window.location.host
 
 /* eslint-disable no-new */
 new Vue({
