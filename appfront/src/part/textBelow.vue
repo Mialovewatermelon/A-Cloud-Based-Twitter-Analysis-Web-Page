@@ -1,7 +1,7 @@
 <template>
     <div>
-        <dv-border-box-6>
-            <dv-decoration-11 style="width:500px;height:80px;" class="title">Recent Positive Emotion Text</dv-decoration-11>
+      <div class="paragraph">
+            <dv-decoration-11 style="width:500px;height:80px; margin-top:20px" class="title">Recent Positive Emotion Text</dv-decoration-11>
             <p>{{TextData_pos[0]}}</p>
             <p>{{TextData_pos[1]}}</p>
             <p>{{TextData_pos[2]}}</p>
@@ -25,7 +25,7 @@
             <p>{{TextData_china_neg[2]}}</p>
             <p>{{TextData_china_neg[3]}}</p>
             <p>{{TextData_china_neg[4]}}</p>
-        </dv-border-box-6>
+      </div>
     </div>
 </template>
 
@@ -75,8 +75,16 @@ export default {
 <style scoped>
 p{
     color: white;
+    margin-bottom: 30px;
 }
 .title{
     margin-top:30 px;
+}
+.paragraph{
+  margin-left: 25%;
+  margin-right: 25%;
+  margin-top: 20px;
+  margin-bottom: 50px;
+  float:none;
 }
 </style>

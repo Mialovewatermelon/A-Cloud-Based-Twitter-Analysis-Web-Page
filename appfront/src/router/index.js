@@ -8,7 +8,10 @@ import analysis from '@/view/analysis'
 import homePage from '@/view/homePage'
 import map from '@/components/map'
 import emotion from '@/components/emotion'
+import singlePerformance from '@/part/singlePerformance'
+import performancePage from '@/view/performancePage'
 import piechart2 from '@/components/piechart2'
+
 Vue.use(Router)
 
 export default new Router({
@@ -58,9 +61,19 @@ export default new Router({
 
     },
     {
+      path: '/usage',
+      name: 'singlePerformance',
+      component: singlePerformance
+    },
+    {
       path: '/analysis',
       name: 'analysis',
       component: analysis
+    },
+    {
+      path: '/performance',
+      name: 'performancePage',
+      component: performancePage
     }
   ]
 })
