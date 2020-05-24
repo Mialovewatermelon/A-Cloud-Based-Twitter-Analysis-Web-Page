@@ -29,16 +29,16 @@ export default {
       type: Array,
       // eslint-disable-next-line vue/require-valid-default-prop
       default: [
-        {name: 'positive', value: 100},
-        {name: 'negative', value: 200}
+        {name: 'positive', value: 0},
+        {name: 'negative', value: 0}
       ]
     },
     LabelData_China: {
       type: Array,
       // eslint-disable-next-line vue/require-valid-default-prop
       default: [
-        {name: 'positive', value: 300},
-        {name: 'negative', value: 400}
+        {name: 'positive', value: 0},
+        {name: 'negative', value: 0}
       ]
     },
     state: {

@@ -134,7 +134,6 @@ export default {
 
       if (this.option && typeof this.option === 'object') {
         this.chart.setOption(this.option, true)
-        this.chart.hideLoading()
         window.onresize = function () {
           console.log('resizing now ')
           myChart.resize()

@@ -49,19 +49,18 @@ export default {
         {name: 'labor party', value: 165394},
         {name: 'national coalition', value: 129032}
       ],
-
       ageData: [
         {name: '0~14 years old', value: 0.1788},
         {name: '15~64 years old', value: 0.6284},
         {name: '65+ years old', value: 0.1928}
       ],
       LabelData: [
-        {name: 'positive', value: 12348},
-        {name: 'negative', value: 5947}
+        {name: 'positive', value: 0},
+        {name: 'negative', value: 0}
       ],
       LabelData_China: [
-        {name: 'positive', value: 8},
-        {name: 'negative', value: 8}
+        {name: 'positive', value: 0},
+        {name: 'negative', value: 0}
       ],
       state: 'Victoria',
       TextData_pos: [ ],
