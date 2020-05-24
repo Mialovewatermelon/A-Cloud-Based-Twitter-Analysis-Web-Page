@@ -25,7 +25,9 @@
         </el-col>
       </el-row>
       <el-row>
-        <textBelow :TextData_pos="TextData_pos" :TextData_neg="TextData_neg" :TextData_china_pos="TextData_china_pos" :TextData_china_neg="TextData_china_neg"></textBelow>
+        <dv-border-box-10 style="width:100%; height:120%; margin-bottom:50px">
+        <textBelow :TextData_pos="TextData_pos" :TextData_neg="TextData_neg" :TextData_china_pos="TextData_china_pos" :TextData_china_neg="TextData_china_neg" style="margin-bottom:30px"></textBelow>
+        </dv-border-box-10>
       </el-row>
     </div>
   </div>
