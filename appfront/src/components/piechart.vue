@@ -9,15 +9,19 @@ export default {
       type: Array,
       // eslint-disable-next-line vue/require-valid-default-prop
       default: [
-        { value: 80, name: '云南' },
-        { value: 5, name: '北京' },
-        { value: 15, name: '山东' },
-        { value: 25, name: '河北' },
-        { value: 20, name: '江苏' },
-        { value: 35, name: '浙江' },
-        { value: 30, name: '四川' },
-        { value: 40, name: '湖北' }
+        {value: 80, name: '云南'},
+        {value: 5, name: '北京'},
+        {value: 15, name: '山东'},
+        {value: 25, name: '河北'},
+        {value: 20, name: '江苏'},
+        {value: 35, name: '浙江'},
+        {value: 30, name: '四川'},
+        {value: 40, name: '湖北'}
       ]
+    },
+    loaded: {
+      type: Boolean,
+      default: false
     }
   },
 
@@ -47,6 +51,17 @@ export default {
         }
       },
       deep: true // 对象内部属性的监听，关键。
+    },
+    loaded: {
+      handler (newVal, oldVal) {
+        if (newVal === false) {
+          this.chart.showLoading()
+        } else {
+          this.chart.hideLoading()
+        }
+      },
+      deep: true // 对象内部属性的监听，关键。
+
     }
   },
 
@@ -76,6 +91,7 @@ export default {
         'temp'
       )
       this.chart = myChart
+      this.chart.showLoading()
       this.option = {
         tooltip: {
           trigger: 'item',
@@ -118,6 +134,7 @@ export default {
 
       if (this.option && typeof this.option === 'object') {
         this.chart.setOption(this.option, true)
+        this.chart.hideLoading()
         window.onresize = function () {
           console.log('resizing now ')
           myChart.resize()

@@ -2,7 +2,7 @@
 <div class="perform">
     <secondHeader></secondHeader>
     <el-row>
-      <el-button @click="goBack">Back to Analysis</el-button>
+      <el-button type="info" @click="goBack">Back to Analysis</el-button>
     </el-row>
     <el-row type="flex" class="row-bg">
         <el-column :span="6">
@@ -36,6 +36,7 @@ export default {
   },
   mounted () {
     this.getData()
+    this.getDataRecursive()
   },
   data () {
     return {
@@ -77,10 +78,13 @@ export default {
       this.$router.push('/analysis')
     },
     getData () {
-      this.axios.get('http://127.0.0.1:8000/api/information/send_info').then(response => {
+      this.axios.get('/api/information/send_info').then(response => {
         var res = response.data
         this.instance = res
       })
+    },
+    getDataRecursive () {
+      setInterval(() => { this.getData() }, 5000)
     }
   }
 }

@@ -3,13 +3,13 @@
     <div class="box-item">
       <dv-border-box-1>
         <dv-decoration-11 style="width:80%;height:100px;" class="title">Political Party Voting Distribution for {{state}}</dv-decoration-11>
-        <piechart :election="election"></piechart>
+        <piechart :loaded="loaded" :election="election"></piechart>
       </dv-border-box-1>
     </div>
     <div class="box-item">
       <dv-border-box-1>
         <dv-decoration-11 style="width:80%;height:80px;" class="title">Age Distribution for {{state}}</dv-decoration-11>
-        <piechart2 :ageData="ageData"></piechart2>
+        <piechart2 :loaded="loaded" :ageData="ageData"></piechart2>
       </dv-border-box-1>
     </div>
   </div>
@@ -29,6 +29,10 @@ export default {
     state: {
       type: String,
       default: 'vic'
+    },
+    loaded: {
+      type: Boolean,
+      default: false
     }
   },
 

@@ -18,6 +18,10 @@ export default {
         { value: 30, name: '四川' },
         { value: 40, name: '湖北' }
       ]
+    },
+    loaded: {
+      type: Boolean,
+      default: false
     }
   },
 
@@ -29,10 +33,10 @@ export default {
   },
   // 如果pieChartData 更新了值则需要刷新数据
   watch: {
-    ageData: {
+    election: {
       handler (newVal, oldVal) {
         console.log('hello')
-        if (this.ageData) {
+        if (this.election) {
           if (newVal) {
             this.option.series[0].data = newVal
             // this.option.legend.data = newVal.name
@@ -44,6 +48,16 @@ export default {
           }
         } else {
           this.init()
+        }
+      },
+      deep: true // 对象内部属性的监听，关键。
+    },
+    loaded: {
+      handler (newVal, oldVal) {
+        if (newVal === false) {
+          this.chart.showLoading()
+        } else {
+          this.chart.hideLoading()
         }
       },
       deep: true // 对象内部属性的监听，关键。
@@ -61,6 +75,7 @@ export default {
         'temp'
       )
       this.chart = myChart
+      this.chart.showLoading()
       this.option = {
         tooltip: {
           trigger: 'item',
@@ -107,6 +122,7 @@ export default {
 
       if (this.option && typeof this.option === 'object') {
         this.chart.setOption(this.option, true)
+        this.chart.hideLoading()
         window.onresize = function () {
           console.log('resizing now ')
           myChart.resize()
