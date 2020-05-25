@@ -20,7 +20,13 @@
       <div class="login-center">
         <dv-border-box-7>
         <p>CCC Assignment 2<br>Using Twitter and Aurin to Analyze Data</p>
-        <p>Team Members: xxxx</p>
+          <li>Team Member:
+            <ul>893060 Shuhua Zhang</ul>
+            <ul>935209 Shuai Mou</ul>
+            <ul>962546 Yicheng Jin</ul>
+            <ul>961002 Shuocheng Li</ul>
+            <ul>830789 Ningjing Wang</ul>
+          </li>
         <el-button @click="openPage">Begin Your Journey Here</el-button>
         </dv-border-box-7>
       </div>
@@ -64,6 +70,10 @@ export default {
     z-index: 100000;
   }
   p {
+    font-size: 30px;
+    color: white;
+  }
+  li {
     font-size: 30px;
     color: white;
   }
