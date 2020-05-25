@@ -3,7 +3,7 @@
         <dv-border-box-11 title="Twitter analysis" style="padding-top:100px">
             <el-button type="info" @click="goBack" icon="el-icon-arrow-left" style="margin-bottom: 20px">GoBack</el-button>
             <div class="box">
-                <combineData :combineInfo="combineInfo"></combineData>
+                <combineData :loaded="loaded" :combineInfo="combineInfo"></combineData>
             </div>
         </dv-border-box-11>
     </div>
@@ -15,13 +15,14 @@ export default {
   name: 'combine',
   data () {
     return {
+      loaded: false,
       combineInfo:
       {
         education: {
           name: 'High Education Proportion',
           type: 'bar',
           data: [
-            0.186092,
+            0.106092,
             0.180997,
             0.148639,
             0.159013,
@@ -70,14 +71,17 @@ export default {
   },
   mounted () {
     this.getCombineData()
-    console.log('hi')
+    setInterval(() => {
+      this.getCombineData()
+      console.log('hi')
+      console.log(this.combineInfo.education.data)
+    }, 10000)
   },
   methods: {
     getCombineData () {
       this.axios.get('/api/tweet/get_combine_data').then(response => {
         this.loaded = true
-        this.combineData = response.data
-        console.log(this.combineData)
+        this.combineInfo = response.data
       })
     },
     goBack () {

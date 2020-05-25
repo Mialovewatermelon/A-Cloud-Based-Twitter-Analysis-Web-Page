@@ -174,6 +174,7 @@ def get_combine_data(request):
     except Exception as e:
         response['msg'] = str(e)
         response['error_num'] = 1
+    print(response)
     return JsonResponse(response)
 
 

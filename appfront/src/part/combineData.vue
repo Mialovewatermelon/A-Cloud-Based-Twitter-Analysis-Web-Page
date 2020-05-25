@@ -6,6 +6,7 @@
 export default {
   name: 'combine',
   props: {
+    loaded: false,
     combineInfo: {
       type: Array,
       // eslint-disable-next-line vue/require-valid-default-prop
@@ -72,12 +73,47 @@ export default {
       option: null
     }
   },
+  watch: {
+    combineInfo: {
+      handler (newVal, oldVal) {
+        console.log('hello')
+        if (this.combineInfo) {
+          if (newVal) {
+            this.option.series[0] = newVal.education
+            this.option.series[1] = newVal.election
+            this.option.series[2] = newVal.pos
+            this.option.series[3] = newVal.china_pos
+            console.log(newVal.education.data)
+            // this.option.legend.data = newVal.name
+            this.chart.setOption(this.option, true)
+          } else {
+            this.option.series = oldVal
+            // this.option.legend.data = this.oldVal.name
+            this.chart.setOption(this.option, true)
+          }
+        }
+      },
+      deep: true // 对象内部属性的监听，关键。
+    },
+    loaded: {
+      handler (newVal, oldVal) {
+        if (newVal === false) {
+          this.chart.showLoading()
+        } else {
+          this.chart.hideLoading()
+        }
+      },
+      deep: true // 对象内部属性的监听，关键。
+
+    }
+  },
   methods: {
     drawEcharts () {
       let myChart = this.$echarts.init(
         document.getElementById('barChart')
       )
       this.chart = myChart
+      this.chart.showLoading()
       this.option = {
         tooltip: {
           trigger: 'axis',
@@ -119,9 +155,9 @@ export default {
           {
             type: 'value',
             name: 'Proportion',
-            min: 0.3,
-            max: 0.7,
-            interval: 0.05,
+            min: 0.0,
+            max: 0.8,
+            interval: 0.1,
             axisLabel: {
               formatter: '{value} %',
               textStyle: {
@@ -140,7 +176,6 @@ export default {
       }
       this.chart.setOption(this.option, true)
       console.log('hello')
-      this.chart.hideLoading()
       window.onresize = function () {
         console.log('resizing now ')
         myChart.resize()
