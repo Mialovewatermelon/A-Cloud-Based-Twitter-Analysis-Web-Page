@@ -11,6 +11,7 @@ import emotion from '@/components/emotion'
 import singlePerformance from '@/part/singlePerformance'
 import performancePage from '@/view/performancePage'
 import piechart2 from '@/components/piechart2'
+import combine from '@/view/combine'
 
 Vue.use(Router)
 
@@ -74,6 +75,11 @@ export default new Router({
       path: '/performance',
       name: 'performancePage',
       component: performancePage
+    },
+    {
+      path: '/combine',
+      name: 'combine',
+      component: combine
     }
   ]
 })

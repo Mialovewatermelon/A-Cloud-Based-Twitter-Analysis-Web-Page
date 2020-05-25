@@ -152,22 +152,22 @@ def get_combine_data(request):
             pos_values.append(pos_value)
             china_pos_values.append(china_pos_value)
         response['education']={
-            'name' : 'high education proportion',
+            'name' : 'High Education Proportion',
             'type' : 'bar',
             'data' : education_values
         }
         response['election']={
-            'name' :  'liberal national coalition proportion',
+            'name' :  'Liberal National Coalition Proportion',
             'type' : 'bar',
             'data' : election_values
         }
         response['pos']={
-            'name': 'positive tweet proportion',
+            'name': 'Overall Positive Tweet Proportion',
             'type': 'line',
             'data': pos_values
         }
         response['china_pos']={
-            'name': 'positive tweet about china proportion',
+            'name': 'Positive Tweet About China Proportion',
             'type': 'line',
             'data': china_pos_values
         }
