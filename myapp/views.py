@@ -127,6 +127,56 @@ def get_information_data(request):
         response['error_num'] = 1
     return JsonResponse(response)
 
+@require_http_methods(["GET"])
+def get_combine_data(request):
+    education_values = []
+    election_values = []
+    pos_values = []
+    china_pos_values = []
+    response = {}
+    DB = couchdb.Server(couchdb_url.url)
+    print(couchdb_url.url)
+    for i in DB:
+        print(i)
+    try:
+        for state in states:
+            pos_num = int(get_view_data(DB, state, 'tweeterData/pos'))
+            neg_num = int(get_view_data(DB, state, 'tweeterData/neg'))
+            china_pos_num = int(get_view_data(DB, state, 'tweeterData/china_pos'))
+            china_neg_num = int(get_view_data(DB, state, 'tweeterData/china_neg'))
+            pos_value = pos_num / (pos_num + neg_num) if pos_num + neg_num != 0 else 0
+            china_pos_value = china_pos_num / (
+                        china_pos_num + china_neg_num) if china_pos_num + china_neg_num != 0 else 0
+            education_values.append(education[state]['persons_with_bachdeg_above_percentage'])
+            election_values.append(election[state]["liberal_national_coalition_votes"])
+            pos_values.append(pos_value)
+            china_pos_values.append(china_pos_value)
+        response['education']={
+            'name' : 'high education proportion',
+            'type' : 'bar',
+            'data' : education_values
+        }
+        response['election']={
+            'name' :  'liberal national coalition proportion',
+            'type' : 'bar',
+            'data' : election_values
+        }
+        response['pos']={
+            'name': 'positive tweet proportion',
+            'type': 'line',
+            'data': pos_values
+        }
+        response['china_pos']={
+            'name': 'positive tweet about china proportion',
+            'type': 'line',
+            'data': china_pos_values
+        }
+    except Exception as e:
+        response['msg'] = str(e)
+        response['error_num'] = 1
+    return JsonResponse(response)
+
+
 
 
 @require_http_methods(["GET"])
