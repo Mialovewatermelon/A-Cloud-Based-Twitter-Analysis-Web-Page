@@ -57,6 +57,10 @@ export default {
         document.getElementById(this.id)
       )
       this.chart = myChart
+<<<<<<< HEAD
+=======
+      this.chart.showLoading()
+>>>>>>> master
       this.option = {
         tooltip: {
           formatter: '{a} <br/>{b} : {c}%'
@@ -75,6 +79,10 @@ export default {
       }
 
       this.chart.setOption(this.option, true)
+<<<<<<< HEAD
+=======
+      this.chart.hideLoading()
+>>>>>>> master
       window.onresize = function () {
         console.log('resizing now ')
         myChart.resize()

@@ -67,17 +67,21 @@ def get_data(request):
                 neg_num = int(get_view_data(DB, state, 'tweeterData/neg'))
                 china_pos_num = int(get_view_data(DB, state,'tweeterData/china_pos'))
                 china_neg_num = int(get_view_data(DB, state,'tweeterData/china_neg'))
+                pos_value = 100 * pos_num / (pos_num + neg_num) if pos_num + neg_num != 0 else 0
+                neg_value = 100 * neg_num / (pos_num + neg_num) if pos_num + neg_num != 0 else 0
+                china_pos_value = 100 * china_pos_num / (china_pos_num + china_neg_num) if china_pos_num + china_neg_num != 0 else 0
+                china_neg_value = 100 * china_neg_num / (china_pos_num + china_neg_num) if china_pos_num + china_neg_num != 0 else 0
                 response['LabelData'] = [
                     {'name': 'positive',
-                     'value': '%.2f%%' % (100 * pos_num / (pos_num + neg_num))},
+                     'value': '%.2f%%' % (pos_value)},
                     {'name': 'negtive',
-                     'value': '%.2f%%' % (100 * neg_num / (pos_num + neg_num))}
+                     'value': '%.2f%%' % (neg_value)}
                 ]
                 response['LabelData_China'] = [
                     {'name': 'China positive',
-                     'value': '%.2f%%' % (100 * china_pos_num / (china_pos_num + china_neg_num))},
+                     'value': '%.2f%%' % (china_pos_value)},
                     {'name': 'China negtive',
-                     'value': '%.2f%%' % (100 * china_neg_num / (china_pos_num + china_neg_num))}
+                     'value': '%.2f%%' % (china_neg_value)}
                 ]
                 response['TextData_pos'] = get_view_data(DB, state, 'tweeterData/pos_text', type='text')
                 response['TextData_neg'] = get_view_data(DB, state, 'tweeterData/neg_text', type='text')

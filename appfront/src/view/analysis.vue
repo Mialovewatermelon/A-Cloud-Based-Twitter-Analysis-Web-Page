@@ -9,11 +9,12 @@
         <el-button type="primary" @click="getPieData('queens', 'Queensland')" >Queensland</el-button>
         <el-button type="primary" @click="getPieData('western', 'Western Australia')">Western Australia</el-button>
         <el-button type="primary" @click="getPieData('southern', 'South Australia')">South Australia</el-button>
+        <el-button type="info" @click="goToPerformace()">instance info</el-button>
       </el-row>
       <el-row type="flex" class="row-bg" justify="center">
         <!-- <el-col :span="2"><el-button type="primary" @click="getPieData" style="float:left; margin: 2px;">新增</el-button></el-col> -->
         <el-col :span="7">
-          <leftGraph :election="election" :ageData="ageData" :state="state"></leftGraph>
+          <leftGraph :loaded="loaded" :election="election" :ageData="ageData" :state="state"></leftGraph>
         </el-col>
         <el-col :span="11">
           <dv-border-box-8>
@@ -43,23 +44,23 @@ import textBelow from '../part/textBelow'
 export default {
   data () {
     return {
+      loaded: false,
       election: [
         {name: 'labor party', value: 165394},
         {name: 'national coalition', value: 129032}
       ],
-
       ageData: [
         {name: '0~14 years old', value: 0.1788},
         {name: '15~64 years old', value: 0.6284},
         {name: '65+ years old', value: 0.1928}
       ],
       LabelData: [
-        {name: 'positive', value: 12348},
-        {name: 'negative', value: 5947}
+        {name: 'positive', value: 0},
+        {name: 'negative', value: 0}
       ],
       LabelData_China: [
-        {name: 'positive', value: 8},
-        {name: 'negative', value: 8}
+        {name: 'positive', value: 0},
+        {name: 'negative', value: 0}
       ],
       state: 'Victoria',
       TextData_pos: [ ],
@@ -86,7 +87,9 @@ export default {
     // 从后段调取接口更新数据
     getPieData (state, stateName) {
       console.log('I click!!')
-      this.axios.get('http://127.0.0.1:8000/api/get_data?state=' + state).then(response => {
+      this.loaded = false
+      this.axios.get('/api/tweet/get_data?state=' + state).then(response => {
+        this.loaded = true
         console.log(window.location.host)
         var res = response.data
         this.state = stateName
@@ -104,6 +107,9 @@ export default {
           this.TextData_china_neg = res['TextData_china_neg']
         }
       })
+    },
+    goToPerformace () {
+      this.$router.push('/performance')
     }
   }
 }
@@ -123,7 +129,7 @@ export default {
     background-size: cover;
     padding-bottom: 5%;
   }
-  .el-button{
+  .el-button {
     width: 150px;
     margin-bottom: 20px;
     margin-top: 20px;
