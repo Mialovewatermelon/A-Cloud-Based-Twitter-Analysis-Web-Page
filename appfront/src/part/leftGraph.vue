@@ -8,8 +8,8 @@
     </div>
     <div class="box-item">
       <dv-border-box-1>
-        <dv-decoration-11 style="width:80%;height:80px;" class="title">Age Distribution for {{state}}</dv-decoration-11>
-        <piechart2 :loaded="loaded" :ageData="ageData"></piechart2>
+        <dv-decoration-11 style="width:80%;height:80px;" class="title">Education Distribution for {{state}}</dv-decoration-11>
+        <piechart2 :loaded="loaded" :education="education"></piechart2>
       </dv-border-box-1>
     </div>
   </div>
@@ -23,7 +23,7 @@ export default {
     election: {
       type: Array
     },
-    ageData: {
+    education: {
       type: Array
     },
     state: {

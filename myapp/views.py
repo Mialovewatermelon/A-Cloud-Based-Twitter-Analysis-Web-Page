@@ -10,8 +10,8 @@ import os
 
 path = os.getcwd()
 
-with open(path + '/myapp/age_distribution.json', encoding='utf-8') as f:
-    age = json.load(f)
+with open(path + '/myapp/education_level.json', encoding='utf-8') as f:
+    education = json.load(f)
 with open(path + '/myapp/election.json', encoding='utf-8') as f:
     election = json.load(f)
 
@@ -87,10 +87,12 @@ def get_data(request):
                 response['TextData_neg'] = get_view_data(DB, state, 'tweeterData/neg_text', type='text')
                 response['TextData_china_pos'] = get_view_data(DB, state, 'tweeterData/china_pos_text', type='text')
                 response['TextData_china_neg'] = get_view_data(DB, state, 'tweeterData/china_neg_text', type='text')
-                response['ageData'] = [
-                    {'name': '0~14 years old', 'value': age[state]['persons_0_14_percentage']},
-                    {'name': '15~64 years old', 'value': age[state]['persons_15_64_percentage']},
-                    {'name': '65+ years old', 'value': age[state]["persons_65_plus_percentage"]}
+                response['education'] = [
+                    {'name': 'has no qualification',
+                     'value': 1 - float(education[state]['persons_with_qualification_percentage'])},
+                    {'name': 'lower than bachelor qualification',
+                     'value': float(education[state]['persons_with_qualification_percentage']) - float(education[state]['persons_with_bachdeg_above_percentage'])},
+                    {'name': 'above bachelor degree', 'value': education[state]['persons_with_bachdeg_above_percentage']},
                 ]
                 response['election'] = [
                     {'name': 'labor party', 'value': election[state]['australian_labor_party_votes']},

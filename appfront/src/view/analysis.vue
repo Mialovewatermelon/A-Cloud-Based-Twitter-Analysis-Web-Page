@@ -14,7 +14,7 @@
       <el-row type="flex" class="row-bg" justify="center">
         <!-- <el-col :span="2"><el-button type="primary" @click="getPieData" style="float:left; margin: 2px;">新增</el-button></el-col> -->
         <el-col :span="7">
-          <leftGraph :loaded="loaded" :election="election" :ageData="ageData" :state="state"></leftGraph>
+          <leftGraph :loaded="loaded" :election="election" :education="education" :state="state"></leftGraph>
         </el-col>
         <el-col :span="11">
           <dv-border-box-8>
@@ -49,18 +49,18 @@ export default {
         {name: 'labor party', value: 165394},
         {name: 'national coalition', value: 129032}
       ],
-      ageData: [
-        {name: '0~14 years old', value: 0.1788},
-        {name: '15~64 years old', value: 0.6284},
-        {name: '65+ years old', value: 0.1928}
+      education: [
+        {name: 'has no qualification', value: 0.5378},
+        {name: 'lower than bachelor qualification', value: 0.2760},
+        {name: 'above bachelor degree', value: 0.1861}
       ],
       LabelData: [
-        {name: 'positive', value: 0},
-        {name: 'negative', value: 0}
+        {name: 'positive', value: '--'},
+        {name: 'negative', value: '--'}
       ],
       LabelData_China: [
-        {name: 'positive', value: 0},
-        {name: 'negative', value: 0}
+        {name: 'positive', value: '--'},
+        {name: 'negative', value: '--'}
       ],
       state: 'Victoria',
       TextData_pos: [ ],
@@ -88,6 +88,7 @@ export default {
     getPieData (state, stateName) {
       console.log('I click!!')
       this.loaded = false
+      this.hideNumber()
       this.axios.get('/api/tweet/get_data?state=' + state).then(response => {
         this.loaded = true
         console.log(window.location.host)
@@ -97,8 +98,8 @@ export default {
         if (res.msg === 0) {
           this.election = res['election']
           console.log('>>>>' + this.election)
-          this.ageData = res['ageData']
-          console.log('>>>>' + this.ageData)
+          this.education = res['education']
+          console.log('>>>>' + this.education)
           this.LabelData = res['LabelData']
           this.LabelData_China = res['LabelData_China']
           this.TextData_pos = res['TextData_pos']
@@ -110,6 +111,16 @@ export default {
     },
     goToPerformace () {
       this.$router.push('/performance')
+    },
+    hideNumber () {
+      this.LabelData = [
+        {name: 'positive', value: '--'},
+        {name: 'negative', value: '--'}
+      ]
+      this.LabelData_China = [
+        {name: 'positive', value: '--'},
+        {name: 'negative', value: '--'}
+      ]
     }
   }
 }

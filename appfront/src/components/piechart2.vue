@@ -1,23 +1,14 @@
 <template>
-  <div id="piecharts2" class="agechart"></div>
+  <div id="piecharts2" class="educhart"></div>
 </template>
 
 <script>
 export default {
   props: {
-    ageData: {
+    education: {
       type: Array,
       // eslint-disable-next-line vue/require-valid-default-prop
-      default: [
-        { value: 80, name: '云南' },
-        { value: 5, name: '北京' },
-        { value: 15, name: '山东' },
-        { value: 25, name: '河北' },
-        { value: 20, name: '江苏' },
-        { value: 35, name: '浙江' },
-        { value: 30, name: '四川' },
-        { value: 40, name: '湖北' }
-      ]
+      default: []
     },
     loaded: {
       type: Boolean,
@@ -33,10 +24,10 @@ export default {
   },
   // 如果pieChartData 更新了值则需要刷新数据
   watch: {
-    election: {
+    education: {
       handler (newVal, oldVal) {
         console.log('hello')
-        if (this.election) {
+        if (this.education) {
           if (newVal) {
             this.option.series[0].data = newVal
             // this.option.legend.data = newVal.name
@@ -79,45 +70,41 @@ export default {
       this.option = {
         tooltip: {
           trigger: 'item',
-          formatter: '{a} <br/>{b} : {c} ({d}%)'
+          formatter: '{a} <br/>{b}: {c} ({d}%)'
         },
         legend: {
-          left: 'center',
-          top: 'bottom',
-          data: this.ageData.name,
+          orient: 'vertical',
+          left: 10,
+          // eslint-disable-next-line no-undef
+          data: this.education.name,
           textStyle: {
             color: 'white'
           }
         },
-        toolbox: {
-          show: true,
-          feature: {
-            mark: {show: true},
-            magicType: {
-              show: true,
-              type: ['pie', 'funnel']
-            }
-          }
-        },
         series: [
           {
-            name: 'Age Distribution',
+            name: 'Education Distribution',
             type: 'pie',
-            radius: [40, 150],
-            center: ['50%', '30%'],
-            roseType: 'area',
+            radius: ['50%', '70%'],
+            avoidLabelOverlap: false,
             label: {
-              show: true
+              show: false,
+              position: 'center'
             },
             emphasis: {
               label: {
-                show: true
+                show: true,
+                fontSize: '30',
+                fontWeight: 'bold'
               }
             },
-            data: this.ageData
+            labelLine: {
+              show: false
+            },
+            // eslint-disable-next-line no-undef
+            data: this.education
           }
         ]
-
       }
 
       if (this.option && typeof this.option === 'object') {
@@ -133,7 +120,7 @@ export default {
 </script>
 
 <style scoped>
-.agechart {
+.educhart {
   width: 100%;
   height: 400px;
 }
