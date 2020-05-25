@@ -1,8 +1,8 @@
 <template>
-  <dv-border-box-3 class="border-box-content">
+  <dv-border-box-3 class="border-box-content" style="padding-top: 20px">
     <div class="container-item">
 
-        <dv-decoration-11 style="width:80%;height:80px; margin-top:10px" class="title">Overall Emotion Analysis</dv-decoration-11>
+        <dv-decoration-11 style="width:80%;height:80px; margin-top:10px;" class="title">Overall Emotion Analysis</dv-decoration-11>
 
       <div class="box-item">
           <emotion :LabelData="LabelData"></emotion>

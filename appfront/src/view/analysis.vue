@@ -9,7 +9,8 @@
         <el-button type="primary" @click="getPieData('queens', 'Queensland')" >Queensland</el-button>
         <el-button type="primary" @click="getPieData('western', 'Western Australia')">Western Australia</el-button>
         <el-button type="primary" @click="getPieData('southern', 'South Australia')">South Australia</el-button>
-        <el-button type="info" @click="goToPerformace()">instance info<i class="el-icon-arrow-right el-icon-right"></i></el-button>
+        <el-button type="success" @click="goToCombine()">Overall analysis<i class="el-icon-arrow-right el-icon-right"></i></el-button>
+        <el-button type="info" @click="goToPerformace()">Instance Info<i class="el-icon-arrow-right el-icon-right"></i></el-button>
       </el-row>
       <el-row type="flex" class="row-bg" justify="center">
         <!-- <el-col :span="2"><el-button type="primary" @click="getPieData" style="float:left; margin: 2px;">新增</el-button></el-col> -->
@@ -26,7 +27,7 @@
         </el-col>
       </el-row>
       <el-row>
-        <dv-border-box-10 style="width:100%; height:120%; margin-bottom:50px">
+        <dv-border-box-10 style="width:100%; height:120%; padding-bottom: 20px; padding-top:20px">
         <textBelow :TextData_pos="TextData_pos" :TextData_neg="TextData_neg" :TextData_china_pos="TextData_china_pos" :TextData_china_neg="TextData_china_neg" style="margin-bottom:30px"></textBelow>
         </dv-border-box-10>
       </el-row>
@@ -121,6 +122,9 @@ export default {
         {name: 'positive', value: '--'},
         {name: 'negative', value: '--'}
       ]
+    },
+    goToCombine () {
+      this.$router.push('/combine')
     }
   }
 }

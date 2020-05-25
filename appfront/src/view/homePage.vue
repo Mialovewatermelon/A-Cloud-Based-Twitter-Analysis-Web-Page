@@ -18,7 +18,7 @@
     </vue-particles>
     <div class="login">
       <div class="login-center">
-        <dv-border-box-7>
+        <dv-border-box-7 style="padding-top:20px; padding-bottom:20px">
         <p>CCC Assignment 2<br>Using Twitter and Aurin to Analyze Data</p>
           <li>Team Member:
             <ul>893060 Shuhua Zhang</ul>

@@ -108,8 +108,10 @@ export default {
             axisPointer: {
               type: 'shadow'
             },
-            textStyle: {
-              color: 'white'
+            axisLabel: { // X轴线 标签修改
+              textStyle: {
+                color: 'white' // 坐标值得具体的颜色
+              }
             }
           }
         ],
@@ -117,15 +119,16 @@ export default {
           {
             type: 'value',
             name: 'Proportion',
-            min: 0,
-            max: 1,
+            min: 0.3,
+            max: 0.7,
             interval: 0.05,
             axisLabel: {
-              formatter: '{value} %'
-            },
-            textStyle: {
-              color: 'white'
+              formatter: '{value} %',
+              textStyle: {
+                color: '#fff'
+              }
             }
+
           }
         ],
         series: [
@@ -149,7 +152,9 @@ export default {
 
 <style scoped>
 .myBar{
-    width:100%;
-    height: 400px;
+    width:80%;
+    height: 800px;
+    margin-left: 10%;
+    margin-right: 10%;
 }
 </style>
