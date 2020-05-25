@@ -9,7 +9,7 @@
         <el-button type="primary" @click="getPieData('queens', 'Queensland')" >Queensland</el-button>
         <el-button type="primary" @click="getPieData('western', 'Western Australia')">Western Australia</el-button>
         <el-button type="primary" @click="getPieData('southern', 'South Australia')">South Australia</el-button>
-        <el-button type="info" @click="goToPerformace()">instance info</el-button>
+        <el-button type="info" @click="goToPerformace()">instance info<i class="el-icon-arrow-right el-icon-right"></i></el-button>
       </el-row>
       <el-row type="flex" class="row-bg" justify="center">
         <!-- <el-col :span="2"><el-button type="primary" @click="getPieData" style="float:left; margin: 2px;">新增</el-button></el-col> -->

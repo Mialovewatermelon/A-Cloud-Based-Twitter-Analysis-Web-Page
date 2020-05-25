@@ -2,29 +2,37 @@
     <div>
       <div class="paragraph">
             <dv-decoration-11 style="width:500px;height:80px; margin-top:20px" class="title">Recent Positive Emotion Text</dv-decoration-11>
-            <p>{{TextData_pos[0]}}</p>
-            <p>{{TextData_pos[1]}}</p>
-            <p>{{TextData_pos[2]}}</p>
-            <p>{{TextData_pos[3]}}</p>
-            <p>{{TextData_pos[4]}}</p>
+            <ol>
+              <li>{{TextData_pos[0]}}</li>
+              <li>{{TextData_pos[1]}}</li>
+              <li>{{TextData_pos[2]}}</li>
+              <li>{{TextData_pos[3]}}</li>
+              <li>{{TextData_pos[4]}}</li>
+            </ol>
             <dv-decoration-11 style="width:500px;height:80px;" class="title">Recent Negtive Emotion Text</dv-decoration-11>
-            <p>{{TextData_neg[0]}}</p>
-            <p>{{TextData_neg[1]}}</p>
-            <p>{{TextData_neg[2]}}</p>
-            <p>{{TextData_neg[3]}}</p>
-            <p>{{TextData_neg[4]}}</p>
+            <ol>
+              <li>{{TextData_neg[0]}}</li>
+              <li>{{TextData_neg[1]}}</li>
+              <li>{{TextData_neg[2]}}</li>
+              <li>{{TextData_neg[3]}}</li>
+              <li>{{TextData_neg[4]}}</li>
+            </ol>
             <dv-decoration-11 style="width:500px;height:80px;" class="title">Recent Positive Emotion Text About China</dv-decoration-11>
-            <p>{{TextData_china_pos[0]}}</p>
-            <p>{{TextData_china_pos[1]}}</p>
-            <p>{{TextData_china_pos[2]}}</p>
-            <p>{{TextData_china_pos[3]}}</p>
-            <p>{{TextData_china_pos[4]}}</p>
+            <ol>
+              <li>{{TextData_china_pos[0]}}</li>
+              <li>{{TextData_china_pos[1]}}</li>
+              <li>{{TextData_china_pos[2]}}</li>
+              <li>{{TextData_china_pos[3]}}</li>
+              <li>{{TextData_china_pos[4]}}</li>
+            </ol>
             <dv-decoration-11 style="width:500px;height:80px;" class="title">Recent Negtive Emotion Text About China</dv-decoration-11>
-            <p>{{TextData_china_neg[0]}}</p>
-            <p>{{TextData_china_neg[1]}}</p>
-            <p>{{TextData_china_neg[2]}}</p>
-            <p>{{TextData_china_neg[3]}}</p>
-            <p>{{TextData_china_neg[4]}}</p>
+            <ol>
+              <li>{{TextData_china_neg[0]}}</li>
+              <li>{{TextData_china_neg[1]}}</li>
+              <li>{{TextData_china_neg[2]}}</li>
+              <li>{{TextData_china_neg[3]}}</li>
+              <li>{{TextData_china_neg[4]}}</li>
+            </ol>
       </div>
     </div>
 </template>
@@ -77,6 +85,12 @@ p{
     color: white;
     margin-bottom: 30px;
 }
+li{
+  color: white;
+  margin-bottom: 30px;
+  margin-left:0PX;
+  text-align: left;
+}
 .title{
     margin-top:30 px;
 }
@@ -85,6 +99,5 @@ p{
   margin-right: 25%;
   margin-top: 20px;
   margin-bottom: 50px;
-  float:none;
 }
 </style>

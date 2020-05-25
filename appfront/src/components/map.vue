@@ -100,15 +100,6 @@ export default {
               color: 'white'
             }
           },
-          toolbox: {
-            show: true,
-            // orient: 'vertical',
-            left: 'left',
-            top: 'top',
-            feature: {
-              restore: {}
-            }
-          },
           series: [
             {
               name: 'Chinese people rate',
