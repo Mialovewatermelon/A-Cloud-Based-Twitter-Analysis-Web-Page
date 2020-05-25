@@ -2,7 +2,7 @@
 <div class="perform">
     <secondHeader></secondHeader>
     <el-row>
-      <el-button type="info" @click="goBack">Back to Analysis</el-button>
+      <el-button type="info" @click="goBack" icon="el-icon-arrow-left">Back to Analysis</el-button>
     </el-row>
     <el-row type="flex" class="row-bg">
         <el-column :span="6">
@@ -92,7 +92,8 @@ export default {
 
 <style scoped>
 .perform{
-  width: 100%;
+  width: 2000px;
   height:100%;
+  background-color: black;
 }
 </style>

@@ -8,7 +8,7 @@ export default {
     cpu_usage: {
       type: Number,
       // eslint-disable-next-line vue/require-valid-default-prop
-      default: 60
+      default: 0
     },
     id: {
       type: Number
@@ -36,8 +36,6 @@ export default {
             // this.option.legend.data = this.oldVal.name
             this.chart.setOption(oldVal, true)
           }
-        } else {
-          this.init()
         }
       },
       deep: true // 对象内部属性的监听，关键。
