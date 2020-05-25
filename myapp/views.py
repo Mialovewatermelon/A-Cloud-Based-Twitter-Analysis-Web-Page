@@ -148,7 +148,7 @@ def get_combine_data(request):
             china_pos_value = china_pos_num / (
                         china_pos_num + china_neg_num) if china_pos_num + china_neg_num != 0 else 0
             education_values.append(education[state]['persons_with_bachdeg_above_percentage'])
-            election_values.append(election[state]["liberal_national_coalition_votes"])
+            election_values.append(election[state]["liberal_national_coalition_votes_percentage"])
             pos_values.append(pos_value)
             china_pos_values.append(china_pos_value)
         response['education']={
