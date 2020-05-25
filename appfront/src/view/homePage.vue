@@ -66,7 +66,6 @@ export default {
     justify-content: center;
     align-items: center;
     margin-top: 100px;
-    height: 250px;
     z-index: 100000;
   }
   p {
