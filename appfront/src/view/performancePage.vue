@@ -45,28 +45,28 @@ export default {
           'instance_num': 1,
           'cpu_num': 2,
           'storage_usage': 18.1,
-          'cpu_usage': 15.1,
+          'cpu_usage': 0,
           'disk_usage': 16.6
         },
         'instance2': {
           'instance_num': 2,
           'cpu_num': 3,
           'storage_usage': 18.1,
-          'cpu_usage': 15.1,
+          'cpu_usage': 0,
           'disk_usage': 16.6
         },
         'instance3': {
           'instance_num': 3,
           'cpu_num': 2,
           'storage_usage': 18.1,
-          'cpu_usage': 15.1,
+          'cpu_usage': 0,
           'disk_usage': 16.6
         },
         'instance4': {
           'instance_num': 4,
           'cpu_num': 2,
           'storage_usage': 18.1,
-          'cpu_usage': 15.1,
+          'cpu_usage': 0,
           'disk_usage': 16.6
         }
       }

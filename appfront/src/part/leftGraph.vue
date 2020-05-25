@@ -7,7 +7,7 @@
       </dv-border-box-1>
     </div>
     <div class="box-item">
-      <dv-border-box-1>
+      <dv-border-box-1 style="padding-top: 10px">
         <dv-decoration-11 style="width:80%;height:80px;" class="title">Education Distribution for {{state}}</dv-decoration-11>
         <piechart2 :loaded="loaded" :education="education"></piechart2>
       </dv-border-box-1>
