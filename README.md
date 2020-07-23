@@ -25,5 +25,17 @@ This repository is designed for the Cluster and Cloud Computing Assignment 2.
   ```
   npm run build
   ```
+# Demo Picture
+## Home Page
+![](pic/1.jpg)
 
+## Twitter Analysis Page
+![](pic/2.jpg)
+![](pic/4.jpg)
+
+## Overall Data Analysis
+![](pic/5.jpg)
+
+## Performance Analysis
+![](pic/6.jpg)
   
